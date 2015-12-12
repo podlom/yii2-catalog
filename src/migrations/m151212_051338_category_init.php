@@ -25,7 +25,7 @@ class m151212_051338_category_init extends Migration
             'rgt' => $this->integer()->notNull(),
             'depth' => $this->integer()->notNull(),
             'tree' => $this->integer()->notNull(),
-            'parent_id' => $this->integer()->notNull(),
+            'parent_id' => $this->integer(),
 
             // Meta data
             'title_meta' => $this->string(),

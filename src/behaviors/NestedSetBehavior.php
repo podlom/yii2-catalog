@@ -1,19 +1,75 @@
 <?php
-/**
- * Horex CMS
- * @author Brusenskiy Dmitry <brussens@horex.xyz>
- * @since 1.0.0
- * @version 1.0.0
- * @link http://horex.xyz <Official site>
- * @copyright 2015 Brusenskiy Dmitry
- * @license http://opensource.org/licenses/Apache-2.0 Apache 2.0
- * @package brussens\modules\catalog\behaviors
- */
 
 namespace brussens\modules\catalog\behaviors;
 
 
-class NestedSetBehavior
+class NestedSetsBehavior extends \creocoder\nestedsets\NestedSetsBehavior
 {
+    /**
+     * Creates the root node if the active record is new or moves it
+     * as the root node.
+     * @return bool|\yii\db\ActiveRecord
+     */
+    public function makeRoot()
+    {
+        $this->operation = self::OPERATION_MAKE_ROOT;
 
+        return $this->owner;
+    }
+
+    /**
+     * Creates a node as the first child of the target node if the active
+     * record is new or moves it as the first child of the target node.
+     * @param \yii\db\ActiveRecord $node
+     * @return bool|\yii\db\ActiveRecord
+     */
+    public function prependTo($node)
+    {
+        $this->operation = self::OPERATION_PREPEND_TO;
+        $this->node = $node;
+
+        return $this->owner;
+    }
+
+    /**
+     * Creates a node as the last child of the target node if the active
+     * record is new or moves it as the last child of the target node.
+     * @param \yii\db\ActiveRecord $node
+     * @return bool|\yii\db\ActiveRecord
+     */
+    public function appendTo($node)
+    {
+        $this->operation = self::OPERATION_APPEND_TO;
+        $this->node = $node;
+
+        return $this->owner;
+    }
+
+    /**
+     * Creates a node as the previous sibling of the target node if the active
+     * record is new or moves it as the previous sibling of the target node.
+     * @param \yii\db\ActiveRecord $node
+     * @return bool|\yii\db\ActiveRecord
+     */
+    public function insertBefore($node)
+    {
+        $this->operation = self::OPERATION_INSERT_BEFORE;
+        $this->node = $node;
+
+        return $this->owner;
+    }
+
+    /**
+     * Creates a node as the next sibling of the target node if the active
+     * record is new or moves it as the next sibling of the target node.
+     * @param \yii\db\ActiveRecord $node
+     * @return bool|\yii\db\ActiveRecord
+     */
+    public function insertAfter($node)
+    {
+        $this->operation = self::OPERATION_INSERT_AFTER;
+        $this->node = $node;
+
+        return $this->owner;
+    }
 }
