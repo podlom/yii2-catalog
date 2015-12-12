@@ -1,0 +1,24 @@
+{
+    "name": "brussens/yii2-catalog",
+    "description": "Catalog module for Yii framework 2.x.x version.",
+    "license": "MIT",
+    "type": "yii2-extension",
+    "version":"0.1,0",
+    "keywords": ["yii2", "yii 2", "catalog", "module"],
+    "authors": [
+        {
+            "name": "Brusenskiy Dmitry",
+            "email": "brussens@nativeweb.ru",
+            "url": "http://nativeweb.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "brussens\\modules\\catalog\\": "src"
+        }
+    }
+}
